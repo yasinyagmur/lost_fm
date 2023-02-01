@@ -1,31 +1,18 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { TopArtistContext } from "../../context/TopArtist";
 
 const ListCard = () => {
-  const [artistList, setArtistList] = useState();
-  console.log(artistList);
-  const API_KEY = process.env.REACT_APP_apiKey;
-  const FEATURED_API = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=jso`;
-
-  const getTopArtist = async () => {
-    try {
-      const { data } = await axios.get(FEATURED_API);
-      setArtistList(data);
-    } catch (error) {}
-  };
-
-  useEffect(() => {
-    getTopArtist();
-  }, []);
+  const { allArtistList } = useContext(TopArtistContext);
+  console.log(allArtistList);
 
   return (
     <div className="container mt-5 w-50">
       <div className="card">
         <div className="row">
-          <div className="col-md-4">
-            <img src="https://via.placeholder.com/150" alt="" srcset="" />
+          <div className="col-md-4 col-sm-12">
+            <img src="https://via.placeholder.com/150" alt="" />
           </div>
-          <div className="col-md-8">
+          <div className="col-md-8 col-sm-12">
             <div className="card-block row">
               <div className="col-md-6">
                 <h6>Artist</h6>
@@ -33,7 +20,7 @@ const ListCard = () => {
               </div>
               <div className="col-md-6 mt-4">
                 <li>listeners:</li>
-                <li>playcount</li>
+                <li>playcount:</li>
               </div>
             </div>
           </div>
