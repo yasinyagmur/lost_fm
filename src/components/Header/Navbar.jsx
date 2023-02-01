@@ -3,7 +3,7 @@ import { TfiGithub, TfiLinkedin } from "react-icons/tfi";
 
 const Navbar = () => {
   return (
-    <header>
+    <header className="bg-light">
       <div className="wrapper">
         <h2 className="header-title">Lost Fm</h2>
         <ul className="header-navbar">

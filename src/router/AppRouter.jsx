@@ -8,7 +8,7 @@ const AppRouter = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/details" element={<ArtistDetails />} />
+        <Route path="/details/:id" element={<ArtistDetails />} />
       </Routes>
     </BrowserRouter>
   );
