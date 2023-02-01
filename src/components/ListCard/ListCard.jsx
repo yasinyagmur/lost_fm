@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { TopArtistContext } from "../../context/TopArtist";
+import { TopArtistContext } from "../../context/TopArtistContext";
 
 const ListCard = () => {
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ const ListCard = () => {
         {allArtistList.data?.map((artist) => {
           return (
             <div
+              key={artist.listeners}
               className="card mt-3"
               style={{ cursor: "pointer" }}
               onClick={() => {

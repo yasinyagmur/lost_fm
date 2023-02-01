@@ -1,5 +1,5 @@
 import "./App.css";
-import { TopArtistProvider } from "./context/TopArtist";
+import { TopArtistProvider } from "./context/TopArtistContext";
 import AppRouter from "./router/AppRouter";
 function App() {
   return (
