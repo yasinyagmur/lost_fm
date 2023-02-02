@@ -5,10 +5,10 @@ import { useState, useEffect, createContext } from "react";
 export const TopArtistContext = createContext();
 
 export const TopArtistProvider = ({ children }) => {
-  const [allArtistList, setAllArtistList] = useState({
-    loading: true,
-    data: [],
-  });
+  // const [allArtistList, setAllArtistList] = useState({
+  //   loading: true,
+  //   data: [],
+  // });
 
   const [topTrack, setTopTrack] = useState({
     loading: true,
@@ -19,8 +19,6 @@ export const TopArtistProvider = ({ children }) => {
     data: [],
   });
   const API_KEY = process.env.REACT_APP_apiKey;
-  const TopArtistList_API = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json`;
-  console.log(TopArtistList_API);
 
   const getTopAlbumArtist = async (name) => {
     console.log(name);
@@ -49,16 +47,19 @@ export const TopArtistProvider = ({ children }) => {
     }
   };
 
-  const getTopArtist = async () => {
-    try {
-      const { data } = await axios.get(TopArtistList_API);
-      setAllArtistList({ loading: false, data: data.artists.artist });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const TopArtistList_API = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json`;
+
+  // const getTopArtist = async () => {
+  //   try {
+  //     const { data } = await axios.get(TopArtistList_API);
+  //     setAllArtistList({ loading: false, data: data.artists.artist });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   useEffect(() => {
-    getTopArtist();
+    // getTopArtist();
     getTopTrack();
     getTopAlbumArtist();
   }, []);
@@ -66,7 +67,7 @@ export const TopArtistProvider = ({ children }) => {
   return (
     <TopArtistContext.Provider
       value={{
-        allArtistList,
+        // allArtistList,
         topTrack,
         getTopTrack,
         getTopAlbumArtist,

@@ -1,26 +1,45 @@
-import { useContext } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TopArtistContext } from "../../context/TopArtistContext";
+import { useFetchTopArtists } from "../../infiniteQuery/useFetchTopArtist";
 
 const ListCard = () => {
   const navigate = useNavigate();
-  const { allArtistList } = useContext(TopArtistContext);
-  console.log(allArtistList);
+  const {
+    isLoading,
+    isError,
+    error,
+    data,
+    fetchNextPage,
+    isFetching,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useFetchTopArtists();
 
-  if (allArtistList.loading) {
-    return (
-      <div className="container mt-5">
-        <h1 className="text-danger text-center">Loading...</h1>
-      </div>
-    );
-  } else {
-    return (
-      <div className="container  w-50 " style={{ marginTop: "7rem" }}>
-        {allArtistList.data?.map((artist) => {
+  useEffect(() => {
+    let fetching = false;
+    const handleScroll = async (e) => {
+      const { scrollHeight, scrollTop, clientHeight } =
+        e.target.scrollingElement;
+      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+        fetching = true;
+        if (hasNextPage) await fetchNextPage();
+        fetching = false;
+      }
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [fetchNextPage, hasNextPage]);
+
+  return (
+    <div className="container  w-50 " style={{ marginTop: "7rem" }}>
+      {data?.pages?.map((page) =>
+        page?.artists?.artist?.map((artist, index) => {
           return (
             <div
               class="card h-100 mb-2"
-              key={artist.listeners}
+              key={index}
               style={{ cursor: "pointer" }}
               onClick={() => {
                 navigate("/details/" + artist.name, {
@@ -57,10 +76,10 @@ const ListCard = () => {
               </div>
             </div>
           );
-        })}
-      </div>
-    );
-  }
+        })
+      )}
+    </div>
+  );
 };
 
 export default ListCard;

@@ -1,10 +1,9 @@
 import "./Navbar.css";
 import { TfiGithub, TfiLinkedin } from "react-icons/tfi";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
   return (
     <header className="bg-light">
       <div className="wrapper">
