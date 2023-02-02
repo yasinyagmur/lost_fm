@@ -15,7 +15,7 @@ const ListCard = () => {
     );
   } else {
     return (
-      <div className="container mt-5 w-50 ">
+      <div className="container  w-50 " style={{ marginTop: "7rem" }}>
         {allArtistList.data?.map((artist) => {
           return (
             <div

@@ -26,7 +26,7 @@ const TopAlbumsCard = () => {
         </h3>
         {topAlbum.data.topalbums.album?.map((artist) => {
           return (
-            <div class="card h-100">
+            <div class="card h-100 mb-2">
               <div class="row no-gutters">
                 <div class="col-md-4 col-sm-12">
                   <img

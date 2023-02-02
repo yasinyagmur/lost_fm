@@ -20,7 +20,7 @@ export const TopArtistHead = () => {
     );
   } else {
     return (
-      <div class="card" style={{ height: "20vh" }}>
+      <div class="card">
         <div class="row no-gutters">
           <div class="col-md-4 col-sm-12">
             <img
