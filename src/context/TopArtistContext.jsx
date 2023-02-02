@@ -21,7 +21,7 @@ export const TopArtistProvider = ({ children }) => {
 
   const getTopTrack = async (name) => {
     console.log(name);
-    const TopTrack_API = `https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&artist=${name}&api_key=${API_KEY}&format=json`;
+    const TopTrack_API = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${name}&api_key=${API_KEY}&format=json`;
 
     console.log(TopTrack_API);
 
@@ -46,6 +46,7 @@ export const TopArtistProvider = ({ children }) => {
     getTopArtist();
     getTopTrack();
   }, []);
+
   return (
     <TopArtistContext.Provider value={{ allArtistList, topTrack, getTopTrack }}>
       {children}
