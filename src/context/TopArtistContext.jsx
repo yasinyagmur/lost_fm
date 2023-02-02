@@ -14,10 +14,25 @@ export const TopArtistProvider = ({ children }) => {
     loading: true,
     data: [],
   });
-
+  const [topAlbum, setTopAlbum] = useState({
+    loading: true,
+    data: [],
+  });
   const API_KEY = process.env.REACT_APP_apiKey;
-  const TopArtist_API = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json`;
-  console.log(TopArtist_API);
+  const TopArtistList_API = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json`;
+  console.log(TopArtistList_API);
+
+  const getTopAlbumArtist = async (name) => {
+    console.log(name);
+    const TopAlbumForArtist_API = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${name}&api_key=${API_KEY}&format=json`;
+    try {
+      const { data } = await axios.get(TopAlbumForArtist_API);
+      console.log(data);
+      setTopAlbum({ loading: false, data: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getTopTrack = async (name) => {
     console.log(name);
@@ -28,7 +43,7 @@ export const TopArtistProvider = ({ children }) => {
     try {
       const { data } = await axios.get(TopTrack_API);
       console.log(data);
-      setTopTrack({ loading: false, data: data.tracks.track });
+      setTopTrack({ loading: false, data: data.toptracks.track });
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +51,7 @@ export const TopArtistProvider = ({ children }) => {
 
   const getTopArtist = async () => {
     try {
-      const { data } = await axios.get(TopArtist_API);
+      const { data } = await axios.get(TopArtistList_API);
       setAllArtistList({ loading: false, data: data.artists.artist });
     } catch (error) {
       console.log(error);
@@ -45,10 +60,19 @@ export const TopArtistProvider = ({ children }) => {
   useEffect(() => {
     getTopArtist();
     getTopTrack();
+    getTopAlbumArtist();
   }, []);
 
   return (
-    <TopArtistContext.Provider value={{ allArtistList, topTrack, getTopTrack }}>
+    <TopArtistContext.Provider
+      value={{
+        allArtistList,
+        topTrack,
+        getTopTrack,
+        getTopAlbumArtist,
+        topAlbum,
+      }}
+    >
       {children}
     </TopArtistContext.Provider>
   );

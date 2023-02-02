@@ -1,9 +1,16 @@
-import React, { useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
 import { TopArtistContext } from "../../context/TopArtistContext";
 
 export const TopArtistHead = () => {
-  const { topTrack } = useContext(TopArtistContext);
-  console.log(topTrack);
+  const { topTrack, getTopTrack } = useContext(TopArtistContext);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+  console.log(state);
+
+  useEffect(() => {
+    getTopTrack(state.name);
+  }, []);
 
   if (topTrack.loading) {
     return (
@@ -13,18 +20,20 @@ export const TopArtistHead = () => {
     );
   } else {
     return (
-      <div className="container mt-5 w-50 ">
+      <div
+        className="container mt-5  bg-light"
+        style={{ border: "2px solid gray", borderRadius: "10px" }}
+      >
         <div className="row">
           <div className="col-md-4 col-sm-12">
-            <img src="" alt="" />
+            <img
+              style={{ marginLeft: "-1rem", borderRadius: "10px 0 0 10px" }}
+              src={state.image[2]["#text"]}
+              alt={state.name}
+            />
           </div>
-          <div className="col-md-8 col-sm-12">
-            <div className="card-block row">
-              <div className="col-md-6 mt-3">
-                <h6>Artist</h6>
-                <h4></h4>
-              </div>
-            </div>
+          <div className="col-md-8  ">
+            <h4 className="text-left mt-5">{state.name}</h4>
           </div>
         </div>
       </div>

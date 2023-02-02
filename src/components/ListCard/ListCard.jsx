@@ -23,7 +23,7 @@ const ListCard = () => {
               className="card mt-3"
               style={{ cursor: "pointer" }}
               onClick={() => {
-                navigate("/details/" + artist.mbid, {
+                navigate("/details/" + artist.name, {
                   state: artist,
                   replace: false,
                 });
