@@ -20,20 +20,20 @@ export const TopArtistHead = () => {
     );
   } else {
     return (
-      <div
-        className="container mt-5  bg-light"
-        style={{ border: "2px solid gray", borderRadius: "10px" }}
-      >
-        <div className="row">
-          <div className="col-md-4 col-sm-12">
+      <div class="card" style={{ height: "20vh" }}>
+        <div class="row no-gutters">
+          <div class="col-md-4 col-sm-12">
             <img
-              style={{ marginLeft: "-1rem", borderRadius: "10px 0 0 10px" }}
               src={state.image[2]["#text"]}
               alt={state.name}
+              class="card-img"
+              style={{ maxWidth: "20vh" }}
             />
           </div>
-          <div className="col-md-8  ">
-            <h4 className="text-left mt-5">{state.name}</h4>
+          <div class="col-md-8 col-sm-12">
+            <div class="card-body">
+              <h3 class="card-title">{state.name}</h3>
+            </div>
           </div>
         </div>
       </div>

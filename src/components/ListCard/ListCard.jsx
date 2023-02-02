@@ -19,8 +19,8 @@ const ListCard = () => {
         {allArtistList.data?.map((artist) => {
           return (
             <div
+              class="card h-100 mb-2"
               key={artist.listeners}
-              className="card mt-3"
               style={{ cursor: "pointer" }}
               onClick={() => {
                 navigate("/details/" + artist.name, {
@@ -29,20 +29,29 @@ const ListCard = () => {
                 });
               }}
             >
-              <div className="row">
-                <div className="col-md-4 col-sm-12">
-                  <img src={artist.image[2]["#text"]} alt={artist.name} />
+              <div class="row no-gutters">
+                <div class="col-md-4 col-sm-12">
+                  <img
+                    src={artist.image[2]["#text"]}
+                    alt={artist.name}
+                    class="card-img"
+                  />
                 </div>
-                <div className="col-md-8 col-sm-12">
-                  <div className="card-block row">
-                    <div className="col-md-6 mt-3">
-                      <h6>Artist</h6>
-                      <h4>{artist.name}</h4>
-                    </div>
-                    <div className="col-md-6 mt-4">
-                      <li>listeners:{artist.listeners}</li>
-                      <li>playcount:{artist.playcount}</li>
-                    </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="card-body">
+                    <p
+                      className="text-center"
+                      style={{ borderBottom: "2px solid gray" }}
+                    >
+                      Artist
+                    </p>
+                    <h5 class="card-title">{artist.name}</h5>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12 mt-5">
+                  <div class="card-body">
+                    <p class="card-text">playcount:{artist.playcount}</p>
+                    <p class="card-text">listeners:{artist.listeners}</p>
                   </div>
                 </div>
               </div>

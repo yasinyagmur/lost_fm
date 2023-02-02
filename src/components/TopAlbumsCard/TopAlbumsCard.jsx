@@ -26,21 +26,24 @@ const TopAlbumsCard = () => {
         </h3>
         {topAlbum.data.topalbums.album?.map((artist) => {
           return (
-            <div key={artist.listeners} className="card mt-3">
-              <div className="row">
-                <div className="col-md-4 col-sm-12">
-                  <img src={artist.image[2]["#text"]} alt={artist.name} />
+            <div class="card h-100">
+              <div class="row no-gutters">
+                <div class="col-md-4 col-sm-12">
+                  <img
+                    src={artist.image[2]["#text"]}
+                    alt={artist.name}
+                    class="card-img"
+                  />
                 </div>
-                <div className="col-md-8 col-sm-12">
-                  <div className="card-block row">
-                    <div className="col-md-6 mt-4">
-                      <h4>{artist.name}</h4>
-                    </div>
-                    <div className="col-md-6 mt-5">
-                      <li style={{ listStyleType: "none" }}>
-                        {artist.playcount} plays
-                      </li>
-                    </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="card-body">
+                    <h5 class="card-title">{artist.name}</h5>
+                    <p class="card-text">{state.name}</p>
+                  </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <div class="card-body">
+                    <p class="card-text mt-4">{artist.playcount} play</p>
                   </div>
                 </div>
               </div>
