@@ -6,6 +6,8 @@ import "./ListCard.css";
 const ListCard = () => {
   const navigate = useNavigate();
   const { data, fetchNextPage, hasNextPage } = useFetchTopArtists();
+  const defaultImage =
+    "https://images.unsplash.com/photo-1581905764498-f1b60bae941a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80";
 
   useEffect(() => {
     let fetching = false;
@@ -31,7 +33,7 @@ const ListCard = () => {
         page?.artists?.artist?.map((artist, index) => {
           return (
             <div
-              className="card h-100 mb-2"
+              className="card card-list h-100 mb-2 shadow p-3 mb-5 bg-body-tertiary rounded"
               key={index}
               style={themeMode}
               onClick={() => {
@@ -44,7 +46,11 @@ const ListCard = () => {
               <div className="row no-gutters">
                 <div className="col-md-4 col-sm-12">
                   <img
-                    src={artist.image[2]["#text"]}
+                    src={
+                      artist.image[2]["#text"]
+                        ? artist.image[2]["#text"]
+                        : defaultImage
+                    }
                     alt={artist.name}
                     className="card-img"
                   />

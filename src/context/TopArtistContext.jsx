@@ -1,6 +1,6 @@
 import axios from "axios";
 import React from "react";
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 
 export const TopArtistContext = createContext();
 
@@ -56,7 +56,7 @@ export const TopArtistProvider = ({ children }) => {
   // };
 
   // useEffect(() => {
-  // getTopArtist();
+  //   getTopArtist();
   //   getTopTrack();
   //   getTopAlbumArtist();
   // }, []);
