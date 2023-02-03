@@ -33,6 +33,7 @@ const Navbar = () => {
             <Link
               to="https://github.com/yasinyagmur"
               style={{ textDecoration: "none", color: "unset" }}
+              data-testid="navbarlinkgithub"
             >
               <TfiGithub /> Github
             </Link>
@@ -41,6 +42,7 @@ const Navbar = () => {
             <Link
               to="https://www.linkedin.com/in/yasinyagmur/"
               style={{ textDecoration: "none", color: "unset" }}
+              data-testid="navbarlinklinkedin"
             >
               <TfiLinkedin /> Linkedin
             </Link>
