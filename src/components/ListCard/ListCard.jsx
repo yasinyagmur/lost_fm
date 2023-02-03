@@ -35,7 +35,7 @@ const ListCard = () => {
   const { themeMode } = useContext(ThemeChangeContext);
 
   return (
-    <div className="container  w-50 " style={{ marginTop: "7rem" }}>
+    <div className="container  w-50 " style={{ paddingTop: "7rem" }}>
       {data?.pages?.map((page) =>
         page?.artists?.artist?.map((artist, index) => {
           return (

@@ -1,14 +1,15 @@
-import { ThemeChangeProvider } from "./context/ThemeChangeContext";
+import { useContext } from "react";
+import { ThemeChangeContext } from "./context/ThemeChangeContext";
 import { TopArtistProvider } from "./context/TopArtistContext";
 import AppRouter from "./router/AppRouter";
 function App() {
+  const { themeMode } = useContext(ThemeChangeContext);
+
   return (
-    <div>
-      <ThemeChangeProvider>
-        <TopArtistProvider>
-          <AppRouter />
-        </TopArtistProvider>
-      </ThemeChangeProvider>
+    <div style={themeMode}>
+      <TopArtistProvider>
+        <AppRouter />
+      </TopArtistProvider>
     </div>
   );
 }

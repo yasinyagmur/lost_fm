@@ -1,11 +1,10 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { TopArtistContext } from "../../context/TopArtistContext";
 import { ThemeChangeContext } from "../../context/ThemeChangeContext";
 
 export const TopArtistHead = () => {
   const { topTrack, getTopTrack } = useContext(TopArtistContext);
-  const navigate = useNavigate();
   const { state } = useLocation();
   console.log(state);
 

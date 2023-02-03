@@ -44,12 +44,13 @@ const Navbar = () => {
               <TfiLinkedin /> Linkedin
             </Link>
           </li>
+          <li>
+            {" "}
+            <button onClick={() => Done()} className="button dark-light">
+              {isClick ? "Dark" : "Light"}
+            </button>
+          </li>
         </ul>
-      </div>
-      <div>
-        <button onClick={() => Done()} className="button">
-          Dark
-        </button>
       </div>
     </header>
   );

@@ -5,7 +5,7 @@ import TopTracksCard from "../components/TopTracksCard/TopTracksCard";
 
 const ArtistDetails = () => {
   return (
-    <div className="container" style={{ marginTop: "7rem" }}>
+    <div className="container" style={{ paddingTop: "7rem" }}>
       <TopArtistHead />
       <div className="row">
         <div className="col-md-6">
