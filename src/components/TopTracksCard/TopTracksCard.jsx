@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useLocation } from "react-router-dom";
+import { ThemeChangeContext } from "../../context/ThemeChangeContext";
 import { TopArtistContext } from "../../context/TopArtistContext";
 
 const TopTracksCard = () => {
@@ -12,6 +13,7 @@ const TopTracksCard = () => {
   useEffect(() => {
     getTopTrack(state.name);
   }, []);
+  const { themeMode } = useContext(ThemeChangeContext);
 
   if (topTrack.loading) {
     return (
@@ -27,7 +29,7 @@ const TopTracksCard = () => {
         </h3>
         {topTrack.data?.map((artist) => {
           return (
-            <div class="card h-100 mb-2">
+            <div class="card h-100 mb-2" style={themeMode}>
               <div class="row no-gutters">
                 <div class="col-md-4 col-sm-12">
                   <img

@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ThemeChangeContext } from "../../context/ThemeChangeContext";
 import { useFetchTopArtists } from "../../infiniteQuery/useFetchTopArtist";
 
 const ListCard = () => {
@@ -31,6 +32,7 @@ const ListCard = () => {
       document.removeEventListener("scroll", handleScroll);
     };
   }, [fetchNextPage, hasNextPage]);
+  const { themeMode } = useContext(ThemeChangeContext);
 
   return (
     <div className="container  w-50 " style={{ marginTop: "7rem" }}>
@@ -40,7 +42,7 @@ const ListCard = () => {
             <div
               class="card h-100 mb-2"
               key={index}
-              style={{ cursor: "pointer" }}
+              style={themeMode}
               onClick={() => {
                 navigate("/details/" + artist.name, {
                   state: artist,

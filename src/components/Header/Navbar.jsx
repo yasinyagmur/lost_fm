@@ -1,37 +1,55 @@
 import "./Navbar.css";
 import { TfiGithub, TfiLinkedin } from "react-icons/tfi";
-import { useNavigate, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { ThemeChangeContext } from "../../context/ThemeChangeContext";
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const { setClick, themeMode } = useContext(ThemeChangeContext);
+
+  const [isClick, setIsClick] = useState(true);
+  console.log(isClick);
+  const Done = () => {
+    setIsClick(!isClick);
+    setClick(isClick);
+  };
   return (
-    <header className="bg-light">
+    <header style={themeMode}>
       <div className="wrapper">
-        <h2
-          className="header-title"
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate("/")}
+        <Link
+          to="/"
+          style={{
+            textDecoration: "none",
+            color: "unset",
+            fontSize: "2rem",
+            fontWeight: "bold",
+          }}
         >
           Lost Fm
-        </h2>
+        </Link>
         <ul className="header-navbar">
           <li>
-            <NavLink
+            <Link
               to="https://github.com/yasinyagmur"
               style={{ textDecoration: "none", color: "unset" }}
             >
               <TfiGithub /> Github
-            </NavLink>
+            </Link>
           </li>
           <li>
-            <NavLink
+            <Link
               to="https://www.linkedin.com/in/yasinyagmur/"
               style={{ textDecoration: "none", color: "unset" }}
             >
               <TfiLinkedin /> Linkedin
-            </NavLink>
+            </Link>
           </li>
         </ul>
+      </div>
+      <div>
+        <button onClick={() => Done()} className="button">
+          Dark
+        </button>
       </div>
     </header>
   );

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { ThemeChangeContext } from "../../context/ThemeChangeContext";
 import { TopArtistContext } from "../../context/TopArtistContext";
 
 const TopAlbumsCard = () => {
@@ -11,6 +12,8 @@ const TopAlbumsCard = () => {
   useEffect(() => {
     getTopAlbumArtist(state.name);
   }, []);
+
+  const { themeMode } = useContext(ThemeChangeContext);
 
   if (topAlbum.loading) {
     return (
@@ -26,7 +29,7 @@ const TopAlbumsCard = () => {
         </h3>
         {topAlbum.data.topalbums.album?.map((artist) => {
           return (
-            <div class="card h-100 mb-2">
+            <div class="card h-100 mb-2" style={themeMode}>
               <div class="row no-gutters">
                 <div class="col-md-4 col-sm-12">
                   <img

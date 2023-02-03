@@ -1,12 +1,14 @@
-import "./App.css";
+import { ThemeChangeProvider } from "./context/ThemeChangeContext";
 import { TopArtistProvider } from "./context/TopArtistContext";
 import AppRouter from "./router/AppRouter";
 function App() {
   return (
     <div>
-      <TopArtistProvider>
-        <AppRouter />
-      </TopArtistProvider>
+      <ThemeChangeProvider>
+        <TopArtistProvider>
+          <AppRouter />
+        </TopArtistProvider>
+      </ThemeChangeProvider>
     </div>
   );
 }
