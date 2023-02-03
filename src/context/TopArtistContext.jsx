@@ -5,19 +5,16 @@ import { useState, useEffect, createContext } from "react";
 export const TopArtistContext = createContext();
 
 export const TopArtistProvider = ({ children }) => {
-  // const [allArtistList, setAllArtistList] = useState({
-  //   loading: true,
-  //   data: [],
-  // });
+  const [artistAlbums, setArtistAlbums] = useState({
+    loading: true,
+    data: [],
+  });
 
   const [topTrack, setTopTrack] = useState({
     loading: true,
     data: [],
   });
-  const [topAlbum, setTopAlbum] = useState({
-    loading: true,
-    data: [],
-  });
+
   const API_KEY = process.env.REACT_APP_apiKey;
 
   const getTopAlbumArtist = async (name) => {
@@ -25,8 +22,8 @@ export const TopArtistProvider = ({ children }) => {
     const TopAlbumForArtist_API = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${name}&api_key=${API_KEY}&format=json`;
     try {
       const { data } = await axios.get(TopAlbumForArtist_API);
-      console.log(data);
-      setTopAlbum({ loading: false, data: data });
+      console.log("album", data);
+      setArtistAlbums({ loading: false, data: data.topalbums.album });
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +37,7 @@ export const TopArtistProvider = ({ children }) => {
 
     try {
       const { data } = await axios.get(TopTrack_API);
-      console.log(data);
+      console.log("track", data);
       setTopTrack({ loading: false, data: data.toptracks.track });
     } catch (error) {
       console.log(error);
@@ -58,20 +55,19 @@ export const TopArtistProvider = ({ children }) => {
   //   }
   // };
 
-  useEffect(() => {
-    // getTopArtist();
-    getTopTrack();
-    getTopAlbumArtist();
-  }, []);
+  // useEffect(() => {
+  // getTopArtist();
+  //   getTopTrack();
+  //   getTopAlbumArtist();
+  // }, []);
 
   return (
     <TopArtistContext.Provider
       value={{
-        // allArtistList,
+        artistAlbums,
         topTrack,
         getTopTrack,
         getTopAlbumArtist,
-        topAlbum,
       }}
     >
       {children}

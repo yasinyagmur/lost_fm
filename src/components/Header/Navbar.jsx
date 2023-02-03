@@ -3,7 +3,6 @@ import { TfiGithub, TfiLinkedin } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { ThemeChangeContext } from "../../context/ThemeChangeContext";
-
 const Navbar = () => {
   const { setClick, themeMode } = useContext(ThemeChangeContext);
 
@@ -18,6 +17,7 @@ const Navbar = () => {
       <div className="wrapper">
         <Link
           to="/"
+          className="link-router"
           style={{
             textDecoration: "none",
             color: "unset",
@@ -45,8 +45,11 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            {" "}
-            <button onClick={() => Done()} className="button dark-light">
+            <button
+              style={themeMode}
+              onClick={() => Done()}
+              className="button dark-light"
+            >
               {isClick ? "Dark" : "Light"}
             </button>
           </li>

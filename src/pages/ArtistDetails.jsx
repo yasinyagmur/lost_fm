@@ -1,18 +1,20 @@
 import React from "react";
-import TopAlbumsCard from "../components/TopAlbumsCard/TopAlbumsCard";
+import { useLocation } from "react-router-dom";
+import Card from "../components/Card/Card";
 import { TopArtistHead } from "../components/TopArtist/TopArtistHead";
-import TopTracksCard from "../components/TopTracksCard/TopTracksCard";
 
 const ArtistDetails = () => {
+  const { state } = useLocation();
+
   return (
     <div className="container" style={{ paddingTop: "7rem" }}>
       <TopArtistHead />
       <div className="row">
         <div className="col-md-6">
-          <TopAlbumsCard />
+          <Card title="topAlbum" name={state.name} />
         </div>
         <div className="col-md-6">
-          <TopTracksCard />
+          <Card title="topTracks" name={state.name} />
         </div>
       </div>
     </div>

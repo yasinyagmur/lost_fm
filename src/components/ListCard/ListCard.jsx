@@ -2,19 +2,10 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ThemeChangeContext } from "../../context/ThemeChangeContext";
 import { useFetchTopArtists } from "../../infiniteQuery/useFetchTopArtist";
-
+import "./ListCard.css";
 const ListCard = () => {
   const navigate = useNavigate();
-  const {
-    isLoading,
-    isError,
-    error,
-    data,
-    fetchNextPage,
-    isFetching,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useFetchTopArtists();
+  const { data, fetchNextPage, hasNextPage } = useFetchTopArtists();
 
   useEffect(() => {
     let fetching = false;
@@ -40,7 +31,7 @@ const ListCard = () => {
         page?.artists?.artist?.map((artist, index) => {
           return (
             <div
-              class="card h-100 mb-2"
+              className="card h-100 mb-2"
               key={index}
               style={themeMode}
               onClick={() => {
@@ -50,29 +41,29 @@ const ListCard = () => {
                 });
               }}
             >
-              <div class="row no-gutters">
-                <div class="col-md-4 col-sm-12">
+              <div className="row no-gutters">
+                <div className="col-md-4 col-sm-12">
                   <img
                     src={artist.image[2]["#text"]}
                     alt={artist.name}
-                    class="card-img"
+                    className="card-img"
                   />
                 </div>
-                <div class="col-md-4 col-sm-12">
-                  <div class="card-body">
+                <div className="col-md-4 col-sm-12">
+                  <div className="card-body">
                     <p
-                      className="text-center"
+                      className="text-center "
                       style={{ borderBottom: "2px solid gray" }}
                     >
                       Artist
                     </p>
-                    <h5 class="card-title">{artist.name}</h5>
+                    <h5 className="card-title">{artist.name}</h5>
                   </div>
                 </div>
-                <div class="col-md-4 col-sm-12 mt-5">
-                  <div class="card-body">
-                    <p class="card-text">playcount:{artist.playcount}</p>
-                    <p class="card-text">listeners:{artist.listeners}</p>
+                <div className="col-md-4 col-sm-12 mt-5">
+                  <div className="card-body">
+                    <p className="card-text">playcount:{artist.playcount}</p>
+                    <p className="card-text">listeners:{artist.listeners}</p>
                   </div>
                 </div>
               </div>
