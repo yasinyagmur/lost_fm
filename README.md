@@ -6,6 +6,7 @@
 
 ## Tech Stack
 * React
+* Bootsrapt v5.3
 * React Context API
 * React Router Dom
 * React Query
@@ -52,7 +53,4 @@ yarn storybook
 * In the Storybook, you will find those isolated components:
 
 ![storylast](./src/assets/LostFmStoryBook.gif)
-
-* There were no actions and controls written as default except the Navbar component which is interactive and to show [backToTop](#) button, you need to give a boolean value.
-
 ---
