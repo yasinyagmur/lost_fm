@@ -24,6 +24,7 @@ const Navbar = () => {
             fontSize: "2rem",
             fontWeight: "bold",
           }}
+          data-testid="navbarlinkhome"
         >
           Lost Fm
         </Link>

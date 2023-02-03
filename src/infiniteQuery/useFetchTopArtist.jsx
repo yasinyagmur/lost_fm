@@ -4,7 +4,7 @@ const API_KEY = process.env.REACT_APP_apiKey;
 
 const fetchTopArtists = async ({ pageParam = 1 }) => {
   try {
-    const url = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&page=${pageParam}&limit=7`;
+    const url = `https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${API_KEY}&format=json&page=${pageParam}&limit=7`;
     const res = await fetch(url);
     return res.json();
   } catch (error) {

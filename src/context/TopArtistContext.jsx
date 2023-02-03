@@ -19,7 +19,7 @@ export const TopArtistProvider = ({ children }) => {
 
   const getTopAlbumArtist = async (name) => {
     console.log(name);
-    const TopAlbumForArtist_API = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${name}&api_key=${API_KEY}&format=json`;
+    const TopAlbumForArtist_API = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${name}&api_key=${API_KEY}&format=json`;
     try {
       const { data } = await axios.get(TopAlbumForArtist_API);
       console.log("album", data);
@@ -31,7 +31,7 @@ export const TopArtistProvider = ({ children }) => {
 
   const getTopTrack = async (name) => {
     console.log(name);
-    const TopTrack_API = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${name}&api_key=${API_KEY}&format=json`;
+    const TopTrack_API = `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${name}&api_key=${API_KEY}&format=json`;
 
     console.log(TopTrack_API);
 
