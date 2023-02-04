@@ -18,11 +18,11 @@ export const TopArtistProvider = ({ children }) => {
   const API_KEY = process.env.REACT_APP_apiKey;
 
   const getTopAlbumArtist = async (name) => {
-    console.log(name);
+    // console.log(name);
     const TopAlbumForArtist_API = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${name}&api_key=${API_KEY}&format=json`;
     try {
       const { data } = await axios.get(TopAlbumForArtist_API);
-      console.log("album", data);
+      // console.log("album", data);
       setArtistAlbums({ loading: false, data: data.topalbums.album });
     } catch (error) {
       console.log(error);
@@ -30,14 +30,14 @@ export const TopArtistProvider = ({ children }) => {
   };
 
   const getTopTrack = async (name) => {
-    console.log(name);
+    // console.log(name);
     const TopTrack_API = `https://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${name}&api_key=${API_KEY}&format=json`;
 
-    console.log(TopTrack_API);
+    // console.log(TopTrack_API);
 
     try {
       const { data } = await axios.get(TopTrack_API);
-      console.log("track", data);
+      // console.log("track", data);
       setTopTrack({ loading: false, data: data.toptracks.track });
     } catch (error) {
       console.log(error);

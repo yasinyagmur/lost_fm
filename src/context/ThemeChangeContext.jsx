@@ -15,17 +15,17 @@ export const ThemeChangeProvider = ({ children }) => {
 
   const [themeMode, setThemeMode] = useState(theme.dark);
   const [click, setClick] = useState();
-  console.log(click);
-
-  const Change = () => {
-    if (!click) {
-      setThemeMode(theme.light);
-    } else {
-      setThemeMode(theme.dark);
-    }
-  };
+  // console.log(click);
 
   useEffect(() => {
+    const Change = () => {
+      if (!click) {
+        setThemeMode(theme.light);
+      } else {
+        setThemeMode(theme.dark);
+      }
+    };
+
     Change();
   }, [click]);
 

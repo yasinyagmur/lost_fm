@@ -7,7 +7,7 @@ const Navbar = () => {
   const { setClick, themeMode } = useContext(ThemeChangeContext);
 
   const [isClick, setIsClick] = useState(true);
-  console.log(isClick);
+  // console.log(isClick);
   const Done = () => {
     setIsClick(!isClick);
     setClick(isClick);
