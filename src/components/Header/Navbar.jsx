@@ -28,6 +28,13 @@ const Navbar = () => {
         >
           Lost Fm
         </Link>
+        <button
+          style={themeMode}
+          onClick={() => Done()}
+          className="button dark-light"
+        >
+          {isClick ? "Dark" : "Light"}
+        </button>
         <ul className="header-navbar">
           <li>
             <Link
@@ -46,15 +53,6 @@ const Navbar = () => {
             >
               <TfiLinkedin /> Linkedin
             </Link>
-          </li>
-          <li>
-            <button
-              style={themeMode}
-              onClick={() => Done()}
-              className="button dark-light"
-            >
-              {isClick ? "Dark" : "Light"}
-            </button>
           </li>
         </ul>
       </div>
